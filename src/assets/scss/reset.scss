@@ -1,0 +1,158 @@
+@charset 'utf-8';
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.15;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+.haha{
+  color: red;
+}
+body {
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100% !important;
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+img {
+  border-style: none;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+input,
+button,
+textarea,
+p,
+li {
+  color: #1f2d3d;
+  font-size: .36rem;
+}
+
+a,
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a,
+img {
+  -webkit-touch-callout: none;
+}
+
+/*为html元素定义如下样式：字体颜色为黑色，背景颜色为白色，字体类型为“微软雅黑、sans-serif、Arial”三种；*/
+
+html {
+  color: #000;
+  background: #FFF;
+  font-family: 'Microsoft YaHei', sans-serif, Arial;
+}
+
+/*为body、div等一系列元素设置字体类型为“微软雅黑、sans-serif、Arial”三种*/
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td,
+strong {
+  padding: 0;
+  margin: 0;
+  font-family: 'Microsoft YaHei', sans-serif, Arial;
+}
+
+/*为img标签设置0像素的边框（img标签在a标签当中时，默认会有蓝色边框）*/
+
+img {
+  border: 0;
+}
+
+/*为a标签设置初始样式，没有下划线，字体颜色为#000（黑色），在点击a标签时没有外侧的高亮线（outline）*/
+
+a {
+  text-decoration: none;
+  color: #000;
+  outline: none;
+}
+
+/*为li去除列表项的小标志*/
+
+li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+section,
+span {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+
+/*after伪元素清浮动的语句*/
+
+.clearfix:after {
+  content: '\200B';
+  clear: both;
+  display: block;
+  height: 0px
+}
