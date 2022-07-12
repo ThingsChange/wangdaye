@@ -2,9 +2,7 @@
   <section>
     <color-bar></color-bar>
     <top-header></top-header>
-    <div class="middle-wrap">123</div>
     <router-view></router-view>
-    <div class="bottom-wrap">哈哈</div>
     <layout-bottom></layout-bottom>
   </section>
 </template>
