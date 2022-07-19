@@ -2,9 +2,9 @@
   <div>
     <div class="footer-wrap">
       <div class="quick-link-wrap">
-        <div v-for="(item,index) in quickLinkList" :key="index" class="nav-item">
-          <span>{{ item }}</span>
-          <div v-if="'01'.includes(index%3) && index !==quickLinkList.length-1" class="cloumn-line"></div>
+        <div v-for="(item,index) in quickLinkList" :key="index" class="nav-item" :class="{'nav-item-has-line':!item}">
+          <span v-if="item">{{ item }}</span>
+          <div v-else class="cloumn-line"></div>
         </div>
       </div>
       <div class="logo-img">
@@ -59,7 +59,13 @@ export default {
   methods: {
     getLinkList() {
       axiosSelf.get('/api/link').then(res => {
-        this.quickLinkList = res.data?.list?.sort((a, b) => a.index - b.index)?.map(v => v.name)
+        let quickLinkList = res.data?.list?.sort((a, b) => a.index - b.index)?.map(v => v.name)
+        this.quickLinkList= quickLinkList.reduce((vv ,v,index) => {
+          vv.push(v)
+          if('01'.includes(index%3) && index !==quickLinkList.length-1) vv.push(null)
+          return vv;
+        },[] )
+        console.log('这里是   this.quickLinkList  ------------', this.quickLinkList)
       })
     },
     getCompanyInfo() {
@@ -88,8 +94,9 @@ export default {
   background-color: #F5F5F5;
 
   .quick-link-wrap {
+    padding: 0 30px 0 42px;
     display: grid;
-    grid-template-columns: 74px 101px 90px;
+    grid-template-columns: 40px 62px 40px 62px 50px;
     justify-content: center;
 
     .nav-item {
@@ -102,7 +109,7 @@ export default {
       color: #333;
       margin-bottom: 15px;
 
-      &:nth-child(3n+2) {
+/*      &:nth-child(3n+2) {
         padding-left: 30px;
         box-sizing: border-box;
       }
@@ -110,7 +117,12 @@ export default {
       &:nth-child(3n+3) {
         padding-left: 30px;
         box-sizing: border-box;
-      }
+      }*/
+    }
+
+    .nav-item-has-line{
+        display: flex;
+      justify-content: center;
     }
 
     .cloumn-line {
@@ -135,8 +147,7 @@ export default {
   .company-info {
     font-size: 10px;
     display: flex;
-    //flex-wrap: wrap;
-    //justify-content: ;
+    padding-left:20px;
     .company-r{
       display: flex;
       flex-direction: column;
