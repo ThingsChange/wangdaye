@@ -27,7 +27,7 @@
         <div class="item-content">
           <swiper class="swiper swiper-laboratory" :options="swiperOption">
             <swiper-slide v-for="(laboratory,index) in laboratoryList" :key="index">
-              <div class="laboratory-card" v-for="item in laboratory">
+              <div class="laboratory-card" @click="goToLab" v-for="item in laboratory">
                     <div class="laboratory-title">{{item.title}}</div>
                     <div class="laboratory-content">{{item.desc}}</div>
               </div>
@@ -82,6 +82,9 @@ export default {
     // carouseList: '/api/carouse',
   },
   methods: {
+    goToLab(){
+      console.log('这里是 跳转到实验室详情 的结果-------------', '实验室详情')
+    },
     getCarouseList() {
       axiosSelf.get('/api/carouse').then(res => {
         this.imgList = res.data.list;
@@ -120,7 +123,7 @@ export default {
 
 <style lang="scss" scoped>
 .home-index-wrap {
-  margin-top: 10px;
+  //margin-top: 10px;
 }
 
 .swiper-wrapper {
