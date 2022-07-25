@@ -1,17 +1,15 @@
 <template>
   <div class="cover">
     <div class="menu-wrap">
-      <div v-for="menu in menuList">
+      <div v-for="menu in menuTabList">
         <div class="menu-first-name">
           <span>{{ menu.name }}</span>
-          <span v-if="menu.child">
-                                    <img src="" alt="">
-                              </span>
-          <div class="menu-second-name" v-for="menuChild in menu.child">
-            {{ menuChild.name }}
-          </div>
         </div>
       </div>
+    </div>
+    <div class="more-tab">
+      <span>更多</span>
+      <img src="./../../assets/images/arrow.png" class="arrow" alt="">
     </div>
   </div>
 </template>
@@ -21,7 +19,7 @@ import axiosSelf from "@/helper/axiosDIY";
 
 export default {
   name: "PageTab",
-  props:['menuList'],
+  props:['menuTabList'],
   created() {
 
   },
@@ -36,5 +34,12 @@ export default {
 </script>
 
 <style scoped>
+.menu-wrap{
+  width: 289px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
 
 </style>

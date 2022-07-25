@@ -17,13 +17,14 @@
         <div class="first-menu-item" :class="[menu.opened?'f-m-open':'']" v-for="menu in menuList" @click.prevent="toggleMenu(menu,$event)" >
           <div class="menu-first-name"  :class="{'first-menu-item-expand':menu.opened}">
             <div>{{ menu.title }}</div>
+            <img v-if=" menu.children && menu.children.length" src="./../../assets/images/arrow.png" class="arrow" :class="{'arrow-down':menu.opened}" alt="">
           </div>
-          <div v-if="menu.opened" class="menu-second-wrap">
+          <div v-if="menu.opened" class="menu-second-wrap" @click="goToMenu(menu,$event)">
             <div class="menu-second-name" v-for="menuChild in menu.children">
               {{ menuChild.title }}
             </div>
           </div>
-          <img v-if=" menu.children && menu.children.length" src="./../../assets/images/arrow.png" class="arrow" :class="{'arrow-down':menu.opened}" alt="">
+
         </div>
       </div>
     </div>
@@ -50,6 +51,11 @@ export default {
     this.getMenuList();
   },
   methods: {
+    goToMenu(menu,event){
+      console.log('这里是   menu  ------------', menu)
+      this.$route.push({name:''})
+
+    },
     toggleMenu(menu,event){
       console.log('这里是   event  ------------', event)
       if(!menu?.children?.length){
@@ -130,14 +136,28 @@ export default {
   font-weight: 400;
   color: rgba(#fff,1);
   margin: 0 10px;
-  //padding: 0px 10px;
-  border-bottom: 1px solid #fff;
+  padding: 0px 10px;
+  width: calc(100vw - 40px);
+  .menu-first-name{
+    border-top: 1px solid #fff;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 36px;
+  }
+  .first-menu-item-expand{
+    //height: 36px;
+    width: 375px;
+    background: #02B8BF;
+    border: none;
+  }
   .arrow{
     height: 6px;
     width: 11px;
-    margin-top: 6px;
     transform: rotate(180deg);
-    align-self: flex-start;
   }
   .arrow-down{
     transform: rotate(0);
@@ -146,18 +166,11 @@ export default {
 .f-m-open{
   flex-flow: column;
 }
-.first-menu-item-expand{
-  //height: 36px;
-  width: 375px;
-  background: #02B8BF;
-}
-.menu-first-name{
-  display: flex;
-  align-items: center;
-  height: 36px;
-}
+
 .menu-second-wrap{
-  padding: 12px 12px 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 15px;
 }
 .menu-second-name{
   margin-bottom: 20px;
